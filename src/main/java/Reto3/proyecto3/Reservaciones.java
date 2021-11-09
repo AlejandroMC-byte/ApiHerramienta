@@ -1,4 +1,3 @@
-
 package Reto3.proyecto3;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,16 +14,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "reservation")
 public class Reservaciones implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status="created";
+    
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties("reservations")
     private Tool tool;
+    
     @ManyToOne
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reservations","messages"})
